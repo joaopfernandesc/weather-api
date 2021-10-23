@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2021_10_23_182710) do
 
+  create_table "temperatures", force: :cascade do |t|
+    t.decimal "temperature", precision: 3, scale: 1
+    t.integer "weather_id"
+    t.index ["weather_id"], name: "index_temperatures_on_weather_id"
+  end
+
   create_table "weathers", force: :cascade do |t|
     t.string "date"
     t.integer "lat"

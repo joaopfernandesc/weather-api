@@ -2,6 +2,7 @@
 
 class Weather < ApplicationRecord
   validates :date, format: { with: /\A\d{4}-\d{2}-\d{2}\Z/ }
+  has_many :temperatures, dependent: :destroy
 
   def lon=(value)
     super(value.to_d * 10000)

@@ -11,9 +11,18 @@ class WeatherController < ApplicationController
     render(json: Weather.find(params[:id]), status: :ok)
   end
 
+  def index
+    weathers = WeathersRepository.filtered_by(Weather.includes(:temperatures), **filter_params)
+    render(json: weathers, status: :ok)
+  end
+
   private
 
   def weather_params
     params.permit(:date, :lat, :lon, :city, :state, temperatures: []).to_h
+  end
+
+  def filter_params
+    params.permit(:date, :city, :sort).to_h.compact.symbolize_keys
   end
 end

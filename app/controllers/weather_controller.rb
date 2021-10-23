@@ -7,6 +7,10 @@ class WeatherController < ApplicationController
     render(json: weather, status: :created)
   end
 
+  def show
+    render(json: Weather.find(params[:id]), status: :ok)
+  end
+
   private
 
   def weather_params

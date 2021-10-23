@@ -19,4 +19,8 @@ class Weather < ApplicationRecord
   def lon
     super / 10000.to_f
   end
+
+  def as_json(options = nil)
+    super.merge('temperatures' => temperatures.pluck(:temperature).map(&:to_f))
+  end
 end

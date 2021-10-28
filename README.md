@@ -2,6 +2,8 @@
 
 ## Project Specifications
 
+Solution is provided [here](https://github.com/joaopfernandesc/weather-api/pull/1)
+
 **Environment**  
 
 - Ruby version: 2.7.1
